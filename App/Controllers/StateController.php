@@ -11,8 +11,10 @@ final class StateController
 {
     public function getStates(Request $request, Response $response, array $args): Response
     {
-        $response->getBody()->write("State controller chamado!!!!");
-        
+        $response = $response->withJson([ // O array passado é retornado como Json
+            "message" => "Hello World!"
+        ]);
+
         return $response;
     }
 }
