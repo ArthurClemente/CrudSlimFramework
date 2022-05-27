@@ -10,14 +10,36 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 final class UserController
 {
-    public function getUsers(Request $request, Response $response, array $args)
+    public function getUsers(Request $request, Response $response, array $args): Response
+    {
+        
+        $userDAO = new UserDAO();
+        $userDAO->getAllUsers();
+
+
+        return $response;
+    }
+    public function insertUsers(Request $request, Response $response, array $args): Response
     {
         $response = $response->withJson([
-            "message" => "UserController"
+            'message' => 'new world'
         ]);
 
-        $usersDAO = new UserDAO();
-        $usersDAO->teste();
+        return $response;
+    }
+    public function updateUsers(Request $request, Response $response, array $args): Response
+    {
+        $response = $response->withJson([
+            'message' => 'hell world'
+        ]);
+
+        return $response;
+    }
+    public function deleteUsers(Request $request, Response $response, array $args): Response
+    {
+        $response = $response->withJson([
+            'message' => 'bye world'
+        ]);
 
         return $response;
     }
