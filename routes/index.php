@@ -1,13 +1,13 @@
 <?php
 
-use App\Controllers\StateController;
+use App\Controllers\UserController;
 
 use function src\slimConfiguration;
 
 $app = new \Slim\App(slimConfiguration());
 
 // #================================================
-$app->get('/', StateController::class . ':getStates'); // "::class" retorna uma string com o caminho completo(namespace e a classe)
+$app->get('/', UserController::class . ':getUsers'); // "::class" retorna uma string com o caminho completo(namespace e a classe)
 // #================================================
 
 $app->run();
