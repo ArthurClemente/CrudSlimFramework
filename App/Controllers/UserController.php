@@ -28,8 +28,7 @@ final class UserController
 
         $userDAO = new UserDAO();
         $user = new UserModel(); // instancia o model de usuário
-        $user->setId($data['id']) // Insere as variávies passadas no corpo da requisição "json" nas variáveis de UserModel.
-            ->setName($data['username'])
+        $user->setName($data['username']) // Insere as variávies passadas no corpo da requisição "json" nas variáveis de UserModel.
             ->setPassWord($data['pass']);
 
         $userDAO->insertUser($user);
