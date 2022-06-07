@@ -2,6 +2,7 @@
 
 namespace App\DAO;
 
+use PDO;
 use App\DAO\Conexao;
 use App\Models\UserModel;
 
@@ -26,7 +27,7 @@ class UserDAO extends Conexao
         $query = $pdo->prepare($sql);
         $query->execute();
 
-        $users = $query->fetchAll(\PDO::FETCH_ASSOC);
+        $users = $query->fetchAll(PDO::FETCH_ASSOC);
 
         return $users;
     }
@@ -35,12 +36,10 @@ class UserDAO extends Conexao
     {
         $sql = "INSERT INTO CrudArtu
                 VALUES(
-                    :id,
                     :username,
                     :pass);";
         $pdo = $this->pdo
         ->prepare($sql);
-        $pdo->bindValue(':id', $user->getId(), \PDO::PARAM_INT);
         $pdo->bindValue(':username', $user->getName(), \PDO::PARAM_STR);
         $pdo->bindValue(':pass', $user->getPassWord(), \PDO::PARAM_STR);
         $pdo->execute();
